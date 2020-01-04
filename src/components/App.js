@@ -2,12 +2,13 @@ import React from 'react';
 
 import '../styles/styles.css'
 import MainHeaderComponent from "./header/MainHeaderComponent";
+import MainNewsListComponent from "./news/MainNewsListComponent";
 
 
 const App = () => (
   <div>
     <MainHeaderComponent />
-    <h1>Hello world</h1>
+    <MainNewsListComponent />
   </div>
 );
 
