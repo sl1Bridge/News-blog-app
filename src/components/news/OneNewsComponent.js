@@ -15,27 +15,31 @@ const styles = {
   photo: {
     marginLeft: '5px',
     float: 'right',
+    height: '260px',
+    width: '260px',
   }
 };
 
 const OneNewsComponent = ({classes}) => (
-    <Card className={classes.cardStyle}>
-      <img src={noImg} alt="newsImg" className={classes.photo}/>
-      <CardContent>
-        <Typography gutterBottom variant="h5" component="h2">
-          Lorem ipsum.
-        </Typography>
-        <Typography variant="body2" color="textSecondary" component="p">
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Blanditiis, cumque doloremque eveniet, exercitationem
-          illum impedit itaque maiores natus omnis optio quis quo repellendus sint sit ut vero voluptatibus! Animi assumenda
-          beatae, consequatur dolore id iure repellendus reprehenderit sit? A ad cum ducimus, ea eius et eveniet excepturi,
-          explicabo iusto nisi, qui quidem ratione reprehenderit sit ut veritatis vitae voluptatibus. Adipisci.
-          illum impedit itaque maiores natus omnis optio quis quo repellendus sint sit ut vero voluptatibus! Animi assumenda
-          beatae, consequatur dolore id iure repellendus reprehenderit sit? A ad cum ducimus, ea eius et eveniet excepturi,
-          explicabo iusto nisi, qui quidem ratione reprehenderit sit ut veritatis vitae voluptatibus. Adipisci.
-        </Typography>
-      </CardContent>
-    </Card>
+  <Card className={classes.cardStyle}>
+    <div className={classes.photo}>
+      <img src={noImg} alt="newsImg"/>
+    </div>
+    <CardContent>
+      <Typography gutterBottom variant="h5" component="h2">
+        Lorem ipsum.
+      </Typography>
+      <Typography variant="body2" color="textSecondary" component="p">
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Blanditiis, cumque doloremque eveniet, exercitationem
+        illum impedit itaque maiores natus omnis optio quis quo repellendus sint sit ut vero voluptatibus! Animi assumenda
+        beatae, consequatur dolore id iure repellendus reprehenderit sit? A ad cum ducimus, ea eius et eveniet excepturi,
+        explicabo iusto nisi, qui quidem ratione reprehenderit sit ut veritatis vitae voluptatibus. Adipisci.
+        illum impedit itaque maiores natus omnis optio quis quo repellendus sint sit ut vero voluptatibus! Animi assumenda
+        beatae, consequatur dolore id iure repellendus reprehenderit sit? A ad cum ducimus, ea eius et eveniet excepturi,
+        explicabo iusto nisi, qui quidem ratione reprehenderit sit ut veritatis vitae voluptatibus. Adipisci.
+      </Typography>
+    </CardContent>
+  </Card>
 );
 
 export default withStyles(styles)(OneNewsComponent);
