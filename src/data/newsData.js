@@ -1,5 +1,6 @@
 export const newsData = [
   {
+    id: 1,
     title: 'Sir Rod Stewart charged over Florida hotel \'punch\'',
     article: 'A police report says the altercation occurred after the singer and his companions, inclu' +
       'ding his son Sean, failed to gain access to a private event on New Year\'s Eve' +
@@ -11,6 +12,7 @@ export const newsData = [
       'that the group "began to get loud and cause a scene", refusing to leave.',
   },
   {
+    id: 2,
     title: 'Hong Kong protests: China sacks top envoy after months of unrest',
     article: `Wang Zhimin was director of Beijing's liaison office for the territory.The Xinhua news agency said Mr Wa' +
       'ng had been replaced by Luo Huining, the Communist Party secretary for the northern province of Shanxi.The sa' +
@@ -20,6 +22,7 @@ export const newsData = [
       hich initially sparked unrest in March 2019.`,
   },
   {
+    id: 3,
     title: 'Leaving Neverland: Court rules accusers can sue Michael Jackson companies',
     article: `Two men who featured in a documentary alleging sexual abuse by the singer Michael Jackson can
       pursue legal claims against two of his companies, a court has ruled.Wade Robson and James Safechuck claim
@@ -28,6 +31,7 @@ export const newsData = [
       documentary Leaving Neverland as a "public lynching".`,
   },
   {
+    id: 4,
     title: 'Qasem Soleimani: Foreign Office hardens Iran and Iraq travel advice',
     article: `The Foreign Office has hardened its travel advice for Iran and Iraq after the killing of top I
       ranian general Qasem Soleimani in a US airstrike.It warns British nationals not to travel to Iraq, except 
@@ -38,6 +42,7 @@ export const newsData = [
       war and I think we have to do everything that we can to pull Donald Trump back from this."`,
   },
   {
+    id: 5,
     title: 'Greta Thunberg changes Twitter name to \'Sharon\' after game show error',
     article: `Greta Thunberg has changed her name to Sharon on Twitter, in honour of a game show contestant
       who appeared to have no idea who she was.While appearing on BBC's Celebrity Mastermind, actor Amanda
@@ -46,6 +51,7 @@ export const newsData = [
       viewed more than five million times.`,
   },
   {
+    id: 6,
     title: 'Sir Rod Stewart charged over Florida hotel \'punch\'',
     article: 'A police report says the altercation occurred after the singer and his companions, inclu' +
       'ding his son Sean, failed to gain access to a private event on New Year\'s Eve' +
@@ -57,6 +63,7 @@ export const newsData = [
       'that the group "began to get loud and cause a scene", refusing to leave.',
   },
   {
+    id: 7,
     title: 'Hong Kong protests: China sacks top envoy after months of unrest',
     article: `Wang Zhimin was director of Beijing's liaison office for the territory.The Xinhua news agency said Mr Wa' +
       'ng had been replaced by Luo Huining, the Communist Party secretary for the northern province of Shanxi.The sa' +
@@ -66,6 +73,7 @@ export const newsData = [
       hich initially sparked unrest in March 2019.`,
   },
   {
+    id: 8,
     title: 'Leaving Neverland: Court rules accusers can sue Michael Jackson companies',
     article: `Two men who featured in a documentary alleging sexual abuse by the singer Michael Jackson can
       pursue legal claims against two of his companies, a court has ruled.Wade Robson and James Safechuck claim
@@ -74,6 +82,7 @@ export const newsData = [
       documentary Leaving Neverland as a "public lynching".`,
   },
   {
+    id: 9,
     title: 'Qasem Soleimani: Foreign Office hardens Iran and Iraq travel advice',
     article: `The Foreign Office has hardened its travel advice for Iran and Iraq after the killing of top I
       ranian general Qasem Soleimani in a US airstrike.It warns British nationals not to travel to Iraq, except 
@@ -84,6 +93,7 @@ export const newsData = [
       war and I think we have to do everything that we can to pull Donald Trump back from this."`,
   },
   {
+    id: 10,
     title: 'Greta Thunberg changes Twitter name to \'Sharon\' after game show error',
     article: `Greta Thunberg has changed her name to Sharon on Twitter, in honour of a game show contestant
       who appeared to have no idea who she was.While appearing on BBC's Celebrity Mastermind, actor Amanda
@@ -92,6 +102,7 @@ export const newsData = [
       viewed more than five million times.`,
   },
   {
+    id: 11,
     title: 'Sir Rod Stewart charged over Florida hotel \'punch\'',
     article: 'A police report says the altercation occurred after the singer and his companions, inclu' +
       'ding his son Sean, failed to gain access to a private event on New Year\'s Eve' +
@@ -103,6 +114,7 @@ export const newsData = [
       'that the group "began to get loud and cause a scene", refusing to leave.',
   },
   {
+    id: 12,
     title: 'Hong Kong protests: China sacks top envoy after months of unrest',
     article: `Wang Zhimin was director of Beijing's liaison office for the territory.The Xinhua news agency said Mr Wa' +
       'ng had been replaced by Luo Huining, the Communist Party secretary for the northern province of Shanxi.The sa' +
@@ -112,6 +124,7 @@ export const newsData = [
       hich initially sparked unrest in March 2019.`,
   },
   {
+    id: 13,
     title: 'Leaving Neverland: Court rules accusers can sue Michael Jackson companies',
     article: `Two men who featured in a documentary alleging sexual abuse by the singer Michael Jackson can
       pursue legal claims against two of his companies, a court has ruled.Wade Robson and James Safechuck claim
@@ -120,6 +133,7 @@ export const newsData = [
       documentary Leaving Neverland as a "public lynching".`,
   },
   {
+    id: 14,
     title: 'Qasem Soleimani: Foreign Office hardens Iran and Iraq travel advice',
     article: `The Foreign Office has hardened its travel advice for Iran and Iraq after the killing of top I
       ranian general Qasem Soleimani in a US airstrike.It warns British nationals not to travel to Iraq, except 
@@ -130,6 +144,7 @@ export const newsData = [
       war and I think we have to do everything that we can to pull Donald Trump back from this."`,
   },
   {
+    id: 15,
     title: 'Greta Thunberg changes Twitter name to \'Sharon\' after game show error',
     article: `Greta Thunberg has changed her name to Sharon on Twitter, in honour of a game show contestant
       who appeared to have no idea who she was.While appearing on BBC's Celebrity Mastermind, actor Amanda
@@ -138,6 +153,7 @@ export const newsData = [
       viewed more than five million times.`,
   },
   {
+    id: 16,
     title: 'Sir Rod Stewart charged over Florida hotel \'punch\'',
     article: 'A police report says the altercation occurred after the singer and his companions, inclu' +
       'ding his son Sean, failed to gain access to a private event on New Year\'s Eve' +
@@ -149,6 +165,7 @@ export const newsData = [
       'that the group "began to get loud and cause a scene", refusing to leave.',
   },
   {
+    id: 17,
     title: 'Hong Kong protests: China sacks top envoy after months of unrest',
     article: `Wang Zhimin was director of Beijing's liaison office for the territory.The Xinhua news agency said Mr Wa' +
       'ng had been replaced by Luo Huining, the Communist Party secretary for the northern province of Shanxi.The sa' +
@@ -158,6 +175,7 @@ export const newsData = [
       hich initially sparked unrest in March 2019.`,
   },
   {
+    id: 18,
     title: 'Leaving Neverland: Court rules accusers can sue Michael Jackson companies',
     article: `Two men who featured in a documentary alleging sexual abuse by the singer Michael Jackson can
       pursue legal claims against two of his companies, a court has ruled.Wade Robson and James Safechuck claim
@@ -166,6 +184,7 @@ export const newsData = [
       documentary Leaving Neverland as a "public lynching".`,
   },
   {
+    id: 19,
     title: 'Qasem Soleimani: Foreign Office hardens Iran and Iraq travel advice',
     article: `The Foreign Office has hardened its travel advice for Iran and Iraq after the killing of top I
       ranian general Qasem Soleimani in a US airstrike.It warns British nationals not to travel to Iraq, except 
@@ -176,6 +195,7 @@ export const newsData = [
       war and I think we have to do everything that we can to pull Donald Trump back from this."`,
   },
   {
+    id: 20,
     title: 'Greta Thunberg changes Twitter name to \'Sharon\' after game show error',
     article: `Greta Thunberg has changed her name to Sharon on Twitter, in honour of a game show contestant
       who appeared to have no idea who she was.While appearing on BBC's Celebrity Mastermind, actor Amanda

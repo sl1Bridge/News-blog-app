@@ -4,6 +4,7 @@ import OneNewsComponent from "./OneNewsComponent";
 
 import {Paper, withStyles} from "@material-ui/core";
 import Container from "@material-ui/core/Container";
+import {newsData} from "../../data/newsData";
 
 const styles = {
   marginContainer: {
@@ -14,14 +15,11 @@ const styles = {
 const MainNewsListComponent = ({classes}) => (
   <Container maxWidth="md">
     <Paper elevation={2} className={classes.marginContainer}>
-      <OneNewsComponent />
-      <OneNewsComponent />
-      <OneNewsComponent />
-      <OneNewsComponent />
-      <OneNewsComponent />
-      <OneNewsComponent />
-      <OneNewsComponent />
-      <OneNewsComponent />
+      {
+        newsData.map(({id, article, title}) => (
+          <OneNewsComponent key={id} title={title} article={article}/>
+        ))
+      }
     </Paper>
   </Container>
 );
