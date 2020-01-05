@@ -1,11 +1,9 @@
-import {ACTION_NEWS_LIST_LOADED} from "../actions/newsActions/actionCreators";
+import {ACTION_NEWS_LIST_LOADED} from "../actions/newsActions/actions";
 
 const defautState = {
-  newsList: {
-    items: [],
+    news: [],
     isEnded: false,
     offset: 0,
-  },
 };
 
 export const newsReducer = (state = defautState, action) => {
@@ -13,7 +11,7 @@ export const newsReducer = (state = defautState, action) => {
     case ACTION_NEWS_LIST_LOADED: {
       return {
         ...state,
-        items: action.payload,
+        news: action.payload,
       }
     }
 

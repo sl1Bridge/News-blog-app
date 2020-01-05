@@ -1,6 +1,6 @@
-export const ACTION_NEWS_LIST_LOADED = 'ACTION_NEWS_LIST_LOADED';
+import {ACTION_NEWS_LIST_LOADED} from "./actions";
 
-export const loadNewsList = (news) => {
+export const loadNewsListActionCreator = (news) => {
   return {
     type: ACTION_NEWS_LIST_LOADED,
     payload: news
