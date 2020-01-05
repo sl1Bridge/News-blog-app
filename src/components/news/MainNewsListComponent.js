@@ -1,15 +1,19 @@
 import React, {useEffect} from 'react';
 import { connect } from 'react-redux';
+import { Waypoint } from "react-waypoint";
 import {loadMoreNewsAction, loadNewsListAction} from "../../actions/newsActions/actions";
 import OneNewsComponent from "./OneNewsComponent";
 import {Paper, withStyles} from "@material-ui/core";
 import Container from "@material-ui/core/Container";
-import Button from "@material-ui/core/Button";
+import CircularProgress from "@material-ui/core/CircularProgress";
 
 
 const styles = {
   marginContainer: {
     padding: '10px 0',
+  },
+  alignCircle: {
+    padding: '30px 50%',
   },
 };
 
@@ -21,15 +25,19 @@ const MainNewsListComponent = ({classes, onScreenLoad, news, isEnded, OnBtnClick
     <Container maxWidth="md">
       <Paper elevation={2} className={classes.marginContainer}>
         {
-          news.map(({id, article, title}) => (
-            <OneNewsComponent key={id} title={title} article={article}/>
+          news.map(({id, article, title},i) => (
+            <React.Fragment key={id}>
+              <OneNewsComponent title={title} article={article}/>
+              <Waypoint onEnter={() => {
+                if(i === offset-1) {OnBtnClickLoadMoreNews(news, offset)}
+              }} />
+            </React.Fragment>
           ))
         }
-
         {
-          (isEnded === false)
-            ? <Button variant="contained" onClick={() => OnBtnClickLoadMoreNews(news, offset)}>Load More</Button>
-            : <p>No more news for now</p>
+          <div className={classes.alignCircle}>
+            <CircularProgress  />
+          </div>
         }
       </Paper>
     </Container>
