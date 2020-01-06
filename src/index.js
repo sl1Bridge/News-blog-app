@@ -4,13 +4,18 @@ import App from './components/App';
 
 import * as serviceWorker from './serviceWorker';
 import { composeWithDevTools } from "redux-devtools-extension";
-import { createStore, applyMiddleware } from "redux";
+import { createStore, applyMiddleware, combineReducers } from "redux";
 import { Provider } from 'react-redux'
 import thunk from 'redux-thunk';
 import {newsReducer} from "./reducers/newsReducer";
+import {loginReducer} from "./reducers/loginReducer";
 
 
-const reduxStore = createStore(newsReducer, composeWithDevTools(applyMiddleware(thunk)));
+const reduxStore = createStore(combineReducers({
+    newsReducer,
+    loginReducer,
+  }),
+  composeWithDevTools(applyMiddleware(thunk)));
 
 ReactDOM.render(
   <Provider store={reduxStore}>

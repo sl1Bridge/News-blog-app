@@ -1,8 +1,10 @@
-import React from "react";
+import React, {useState} from "react";
 import {withStyles} from "@material-ui/core";
 import TextField from "@material-ui/core/TextField";
 import Typography from "@material-ui/core/Typography";
 import Fab from "@material-ui/core/Fab";
+import {connect} from "react-redux";
+import {changeLoginStatusAction} from "../../actions/loginActions/actions";
 
 const styles = {
   flexContainer: {
@@ -32,35 +34,63 @@ const styles = {
   },
   fieldStyles: {
     marginBottom: '15px',
+    width: '350px',
   },
 };
 
-const SignInComponent = ({classes}) => (
+const SignInComponent = ({classes, loginStatus, username, password, onSignInBtnClick}) => {
+  const [inputUsername, setInputUsername] = React.useState('');
+  const [inputPassword, setInputPassword] = React.useState('');
+
+  return (
   <div className={classes.formContainer}>
-    <form action="" className={classes.flexContainer}>
+    <form onSubmit={(event => {
+                        event.preventDefault();
+                        if(inputUsername === username && inputPassword === password) {
+                          onSignInBtnClick()
+                        }
+                      })}
+          className={classes.flexContainer}>
       <div className={classes.fieldsContainer}>
         <Typography className={classes.textLabel}> Username </Typography>
         <TextField placeholder="Username"
                    variant="outlined"
                    size="small"
+                   value={inputUsername}
+                   onChange={(event) => setInputUsername(event.target.value)}
                    className={classes.fieldStyles}/>
         <Typography className={classes.textLabel}> Password </Typography>
         <TextField placeholder="Password"
                    variant="outlined"
                    size="small"
                    type="password"
+                   autoComplete="password"
+                   value={inputPassword}
+                   onChange={(event) => setInputPassword(event.target.value)}
                    className={classes.fieldStyles}/>
       </div>
       <div>
         <Fab variant="extended"
              color="primary"
              aria-label="add"
+             type="submit"
              className={classes.buttonStyles}>
           Sign In
         </Fab>
       </div>
     </form>
   </div>
-);
+  )
+};
 
-export default withStyles(styles)(SignInComponent);
+const mapStateToProps = ({loginReducer}) => ({
+  loginStatus: loginReducer.loginStatus,
+  username: loginReducer.username,
+  password: loginReducer.password,
+});
+
+const mapDispatchToProps = (dispatch) => ({
+  onSignInBtnClick: () => dispatch(changeLoginStatusAction()),
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(withStyles(styles)(SignInComponent));
