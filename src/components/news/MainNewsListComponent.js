@@ -17,26 +17,27 @@ const styles = {
   },
 };
 
-const MainNewsListComponent = ({classes, onScreenLoad, news, isEnded, OnBtnClickLoadMoreNews, offset}) => {
-
-  useEffect(() => {onScreenLoad()}, [onScreenLoad]);
+const MainNewsListComponent = ({classes, onScreenLoad, news, isEnded, OnScrollDownLoadMore, offset}) => {
+  useEffect(onScreenLoad, []);
 
   return (
     <Container maxWidth="md">
       <Paper elevation={2} className={classes.marginContainer}>
         {
-          news.map(({id, article, title},i) => (
-            <React.Fragment key={id}>
-              <OneNewsComponent title={title} article={article}/>
-              <Waypoint onEnter={() => {
-                if(i === offset-1) {OnBtnClickLoadMoreNews(news, offset)}
-              }} />
-            </React.Fragment>
+          news.map(({id, article, title}) => (
+              <OneNewsComponent key={id} title={title} article={article}/>
           ))
         }
         {
           <div className={classes.alignCircle}>
-            <CircularProgress  />
+            {
+              isEnded ?
+                <p>no more</p> :
+                <React.Fragment>
+                  <CircularProgress  />
+                  <Waypoint onEnter={() => (OnScrollDownLoadMore(news, offset))} />
+                </React.Fragment>
+            }
           </div>
         }
       </Paper>
@@ -52,7 +53,7 @@ const mapStateToProps = (state) => ({
 
 const mapDispatchToProps = (dispatch) => ({
   onScreenLoad: () => dispatch(loadNewsListAction()),
-  OnBtnClickLoadMoreNews: (news, offset) => dispatch(loadMoreNewsAction(news, offset)),
+  OnScrollDownLoadMore: (news, offset) => dispatch(loadMoreNewsAction(news, offset)),
 });
 
 
