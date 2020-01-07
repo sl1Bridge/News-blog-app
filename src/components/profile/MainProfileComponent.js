@@ -6,6 +6,7 @@ import Tabs from "@material-ui/core/Tabs";
 import Tab from "@material-ui/core/Tab";
 import OneTabPanelComponent from "./OneTabPanelComponent";
 import withStyles from "@material-ui/core/styles/withStyles";
+import ProfileInfoComponent from "./tabs/ProfileInfoComponent";
 
 const styles = {
   marginContainer: {
@@ -25,13 +26,13 @@ const MainProfileComponent = ({classes}) => {
       <Paper elevation={2}>
         <AppBar position="static">
           <Tabs value={value} onChange={handleChange} aria-label="simple tabs example">
-            <Tab label="Profile" />
+            <Tab label="Profile Info" />
             <Tab label="Change Username" />
             <Tab label="Change Password" />
           </Tabs>
         </AppBar>
         <OneTabPanelComponent value={value} index={0}>
-          privet
+          <ProfileInfoComponent />
         </OneTabPanelComponent>
         <OneTabPanelComponent value={value} index={1}>
           Item Two
