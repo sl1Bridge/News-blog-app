@@ -45,10 +45,10 @@ const MainNewsListComponent = ({classes, onScreenLoad, news, isEnded, OnScrollDo
   )
 };
 
-const mapStateToProps = (state) => ({
-  news: state.news,
-  isEnded: state.isEnded,
-  offset: state.offset,
+const mapStateToProps = ({newsReducer}) => ({
+  news: newsReducer.news,
+  isEnded: newsReducer.isEnded,
+  offset: newsReducer.offset,
 });
 
 const mapDispatchToProps = (dispatch) => ({

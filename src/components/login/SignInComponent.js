@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React from "react";
 import {withStyles} from "@material-ui/core";
 import TextField from "@material-ui/core/TextField";
 import Typography from "@material-ui/core/Typography";
@@ -38,7 +38,7 @@ const styles = {
   },
 };
 
-const SignInComponent = ({classes, loginStatus, username, password, onSignInBtnClick}) => {
+const SignInComponent = ({classes, username, password, onSignInBtnClick}) => {
   const [inputUsername, setInputUsername] = React.useState('');
   const [inputPassword, setInputPassword] = React.useState('');
 
