@@ -1,4 +1,8 @@
-import {ACTION_LOGIN_STATUS_CHANGED, ACTION_USERNAME_CHANGED} from "../actions/loginActions/actionCreators";
+import {
+  ACTION_LOGIN_STATUS_CHANGED,
+  ACTION_PASSWORD_CHANGED,
+  ACTION_USERNAME_CHANGED
+} from "../actions/loginActions/actionCreators";
 
 const defautState = {
   loginStatus: false,
@@ -6,7 +10,7 @@ const defautState = {
   password: '12345',
 };
 
-export const loginReducer = (state = defautState, action) => {
+export const rootReducer = (state = defautState, action) => {
   switch (action.type) {
     case ACTION_LOGIN_STATUS_CHANGED: {
       return {
@@ -14,10 +18,18 @@ export const loginReducer = (state = defautState, action) => {
         loginStatus: action.payload
       }
     }
+
     case ACTION_USERNAME_CHANGED: {
       return {
         ...state,
         username: action.payload
+      }
+    }
+
+    case ACTION_PASSWORD_CHANGED: {
+      return {
+        ...state,
+        password: action.payload
       }
     }
 

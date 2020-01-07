@@ -8,12 +8,12 @@ import { createStore, applyMiddleware, combineReducers } from "redux";
 import { Provider } from 'react-redux'
 import thunk from 'redux-thunk';
 import {newsReducer} from "./reducers/newsReducer";
-import {loginReducer} from "./reducers/loginReducer";
+import {rootReducer} from "./reducers/rootReducer";
 
 
 const reduxStore = createStore(combineReducers({
     newsReducer,
-    loginReducer,
+    rootReducer,
   }),
   composeWithDevTools(applyMiddleware(thunk)));
 

@@ -8,6 +8,7 @@ import OneTabPanelComponent from "./OneTabPanelComponent";
 import withStyles from "@material-ui/core/styles/withStyles";
 import ProfileInfoComponent from "./tabs/ProfileInfoComponent";
 import ChangeUsernameComponent from "./tabs/ChangeUsernameComponent";
+import ChangePasswordComponent from "./tabs/ChangePasswordComponent";
 
 const styles = {
   marginContainer: {
@@ -37,7 +38,7 @@ const MainProfileComponent = ({classes}) => {
           <ChangeUsernameComponent />
         </OneTabPanelComponent>
         <OneTabPanelComponent value={value} index={2}>
-          Item Three
+          <ChangePasswordComponent />
         </OneTabPanelComponent>
       </Paper>
     </Container>

@@ -4,7 +4,7 @@ import TextField from "@material-ui/core/TextField";
 import Fab from "@material-ui/core/Fab";
 import {withStyles} from "@material-ui/core";
 import {connect} from "react-redux";
-import {changeUsernameAction} from "../../../actions/loginActions/actions";
+import {changePasswordAction} from "../../../actions/loginActions/actions";
 
 const styles = {
   formContainer: {
@@ -26,7 +26,7 @@ const styles = {
   },
 };
 
-const ChangeUsernameComponent = ({classes, username, onChangeBtnClick}) => {
+const ChangePasswordComponent = ({classes, password, onChangeBtnClick}) => {
   const [inputPrev, setInputPrev] = React.useState('');
   const [inputNew, setInputNew] = React.useState('');
 
@@ -34,22 +34,26 @@ const ChangeUsernameComponent = ({classes, username, onChangeBtnClick}) => {
     <div className={classes.formContainer}>
       <form onSubmit={(event => {
         event.preventDefault();
-        if(inputPrev === username) {
+        if(inputPrev === password) {
           onChangeBtnClick(inputNew)
         }
       })}>
         <div className={classes.fieldsContainer}>
-          <Typography className={classes.textLabel}> Previous Username </Typography>
-          <TextField placeholder="Prev Username"
+          <Typography className={classes.textLabel}> Previous Password </Typography>
+          <TextField placeholder="Prev Password"
                      variant="outlined"
                      size="small"
+                     type="password"
+                     autoComplete="password"
                      value={inputPrev}
                      onChange={(event) => setInputPrev(event.target.value)}
                      className={classes.fieldStyles}/>
-          <Typography className={classes.textLabel}> New Username </Typography>
-          <TextField placeholder="New Username"
+          <Typography className={classes.textLabel}> New Password </Typography>
+          <TextField placeholder="New Password"
                      variant="outlined"
                      size="small"
+                     type="password"
+                     autoComplete="password"
                      value={inputNew}
                      onChange={(event) => setInputNew(event.target.value)}
                      className={classes.fieldStyles}/>
@@ -69,11 +73,11 @@ const ChangeUsernameComponent = ({classes, username, onChangeBtnClick}) => {
 };
 
 const mapStateToProps = ({rootReducer}) => ({
-  username: rootReducer.username,
+  password: rootReducer.password,
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  onChangeBtnClick: (newUsername) => dispatch(changeUsernameAction(newUsername)),
+  onChangeBtnClick: (newPassword) => dispatch(changePasswordAction(newPassword)),
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(withStyles(styles)(ChangeUsernameComponent));
+export default connect(mapStateToProps, mapDispatchToProps)(withStyles(styles)(ChangePasswordComponent));

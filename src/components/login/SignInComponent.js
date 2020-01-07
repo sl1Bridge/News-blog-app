@@ -83,10 +83,10 @@ const SignInComponent = ({classes, username, password, onSignInBtnClick}) => {
   )
 };
 
-const mapStateToProps = ({loginReducer}) => ({
-  loginStatus: loginReducer.loginStatus,
-  username: loginReducer.username,
-  password: loginReducer.password,
+const mapStateToProps = ({rootReducer}) => ({
+  loginStatus: rootReducer.loginStatus,
+  username: rootReducer.username,
+  password: rootReducer.password,
 });
 
 const mapDispatchToProps = (dispatch) => ({

@@ -11,9 +11,9 @@ import '../styles/styles.css'
 const App = () => (
   <div>
     <MainHeaderComponent />
-{/*    <MainNewsListComponent />
+    <MainNewsListComponent />
     <HomePageComponent />
-    <SignInComponent />*/}
+    <SignInComponent />
     <MainProfileComponent />
   </div>
 );

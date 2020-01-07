@@ -23,9 +23,9 @@ const ProfileInfoComponent = ({classes, username, password}) => (
   </div>
 );
 
-const mapStateToProps = ({loginReducer}) => ({
-  username: loginReducer.username,
-  password: loginReducer.password,
+const mapStateToProps = ({rootReducer}) => ({
+  username: rootReducer.username,
+  password: rootReducer.password,
 });
 
 export default connect(mapStateToProps)(withStyles(styles)(ProfileInfoComponent));
