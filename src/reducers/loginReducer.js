@@ -1,4 +1,4 @@
-import {ACTION_LOGIN_STATUS_CHANGED} from "../actions/loginActions/actionCreators";
+import {ACTION_LOGIN_STATUS_CHANGED, ACTION_USERNAME_CHANGED} from "../actions/loginActions/actionCreators";
 
 const defautState = {
   loginStatus: false,
@@ -12,6 +12,12 @@ export const loginReducer = (state = defautState, action) => {
       return {
         ...state,
         loginStatus: action.payload
+      }
+    }
+    case ACTION_USERNAME_CHANGED: {
+      return {
+        ...state,
+        username: action.payload
       }
     }
 
