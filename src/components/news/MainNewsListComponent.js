@@ -31,12 +31,11 @@ const MainNewsListComponent = ({classes, onScreenLoad, news, isEnded, OnScrollDo
         {
           <div className={classes.alignCircle}>
             {
-              isEnded ?
-                <p>no more</p> :
+              !isEnded ?
                 <React.Fragment>
                   <CircularProgress  />
                   <Waypoint onEnter={() => (OnScrollDownLoadMore(news, offset))} />
-                </React.Fragment>
+                </React.Fragment> : <React.Fragment/>
             }
           </div>
         }
