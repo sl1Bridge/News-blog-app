@@ -21,27 +21,26 @@ const MainNewsListComponent = ({classes, news, isEnded, actions: {loadNewsListAc
   useEffect(loadNewsListAction, []);
 
   return (
-      <Container maxWidth="md">
-        <Paper elevation={2} className={classes.marginContainer}>
-          {
-            news.map(({id, article, title}) => (
-                <OneNewsComponent key={id} title={title} article={article}/>
-            ))
-          }
-          {
-            <div className={classes.alignCircle}>
-              {
-                isEnded ?
-                    <p>no more</p> :
-                    <React.Fragment>
-                      <CircularProgress  />
-                      <Waypoint onEnter={() => (loadMoreNewsAction(news, offset))} />
-                    </React.Fragment>
-              }
-            </div>
-          }
-        </Paper>
-      </Container>
+    <Container maxWidth="md">
+      <Paper elevation={2} className={classes.marginContainer}>
+        {
+          news.map(({id, article, title}) => (
+              <OneNewsComponent key={id} title={title} article={article}/>
+          ))
+        }
+        {
+          <div className={classes.alignCircle}>
+            {
+              !isEnded ?
+                <React.Fragment>
+                  <CircularProgress  />
+                  <Waypoint onEnter={() => (OnScrollDownLoadMore(news, offset))} />
+                </React.Fragment> : <React.Fragment/>
+            }
+          </div>
+        }
+      </Paper>
+    </Container>
   )
 };
 
