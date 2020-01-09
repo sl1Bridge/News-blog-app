@@ -6,7 +6,7 @@ import OneNewsComponent from "./OneNewsComponent";
 import {Paper, withStyles} from "@material-ui/core";
 import Container from "@material-ui/core/Container";
 import CircularProgress from "@material-ui/core/CircularProgress";
-
+import {bindActionCreators} from 'redux';
 
 const styles = {
   marginContainer: {
@@ -17,8 +17,8 @@ const styles = {
   },
 };
 
-const MainNewsListComponent = ({classes, onScreenLoad, news, isEnded, OnScrollDownLoadMore, offset}) => {
-  useEffect(onScreenLoad, []);
+const MainNewsListComponent = ({classes, news, isEnded, actions: {loadNewsListAction, loadMoreNewsAction}, offset}) => {
+  useEffect(loadNewsListAction, []);
 
   return (
     <Container maxWidth="md">
@@ -50,10 +50,11 @@ const mapStateToProps = ({newsReducer}) => ({
   offset: newsReducer.offset,
 });
 
-const mapDispatchToProps = (dispatch) => ({
-  onScreenLoad: () => dispatch(loadNewsListAction()),
-  OnScrollDownLoadMore: (news, offset) => dispatch(loadMoreNewsAction(news, offset)),
+const mapDispatchToProps = dispatch => ({
+  actions: bindActionCreators({
+    loadNewsListAction,
+    loadMoreNewsAction
+  }, dispatch)
 });
-
 
 export default connect(mapStateToProps, mapDispatchToProps)(withStyles(styles)(MainNewsListComponent));
