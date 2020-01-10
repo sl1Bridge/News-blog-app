@@ -1,5 +1,5 @@
 import {
-  ACTION_LOGIN_STATUS_CHANGED,
+  ACTION_LOGIN_STATUS_CHANGED, ACTION_LOGOUT,
   ACTION_PASSWORD_CHANGED,
   ACTION_USERNAME_CHANGED
 } from "../actions/loginActions/actionCreators";
@@ -13,6 +13,13 @@ const defautState = {
 export const rootReducer = (state = defautState, action) => {
   switch (action.type) {
     case ACTION_LOGIN_STATUS_CHANGED: {
+      return {
+        ...state,
+        loginStatus: action.payload
+      }
+    }
+
+    case ACTION_LOGOUT: {
       return {
         ...state,
         loginStatus: action.payload

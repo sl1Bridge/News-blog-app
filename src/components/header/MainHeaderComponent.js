@@ -8,7 +8,12 @@ import IconButton from "@material-ui/core/IconButton";
 import Typography from "@material-ui/core/Typography";
 import Button from "@material-ui/core/Button";
 import HomeIcon from '@material-ui/icons/Home';
+import ExitToAppIcon from '@material-ui/icons/ExitToApp';
 import history from "../../history";
+import {connect} from "react-redux";
+import {bindActionCreators} from "redux";
+import {logOutAction} from "../../actions/loginActions/actions";
+
 
 const styles = {
   headerContainer: {
@@ -20,7 +25,7 @@ const styles = {
   homeButton: {
     margin: '0 35px 0 15px',
   },
-  homeButtonIcon: {
+  buttonIcon: {
     fontSize: '32px',
   },
   loginButton: {
@@ -33,7 +38,7 @@ const styles = {
   },
 };
 
-const MainHeaderComponent = ({classes}) => (
+const MainHeaderComponent = ({classes, loginStatus, actions: {logOutAction}}) => (
     <AppBar position="static">
       <Toolbar className={classes.headerContainer}>
         <Link to="/" className={classes.linkStyles}>
@@ -42,7 +47,7 @@ const MainHeaderComponent = ({classes}) => (
                       aria-label="home"
                       className={classes.homeButton}
           >
-            <HomeIcon className={classes.homeButtonIcon}/>
+            <HomeIcon className={classes.buttonIcon}/>
           </IconButton>
         </Link>
         <Typography variant="h4"
@@ -50,15 +55,45 @@ const MainHeaderComponent = ({classes}) => (
         >
           {(history.location.pathname === "/profile") ? "Profile" : "News"}
         </Typography>
-        <Link to="/login" className={classes.linkStyles}>
-          <Button color="inherit"
-                  className={classes.loginButton}
-          >
-            Login
-          </Button>
-        </Link>
+        {
+          (loginStatus === false) ?
+          <Link to="/login" className={classes.linkStyles}>
+            <Button color="inherit"
+                    className={classes.loginButton}
+            >
+              Login
+            </Button>
+          </Link> :
+          <div>
+            <Link to="/profile" className={classes.linkStyles}>
+              <Button color="inherit"
+                      className={classes.loginButton}
+              >
+                Profile
+              </Button>
+            </Link>
+            <IconButton edge="start"
+                        color="inherit"
+                        aria-label="logout"
+                        onClick={() => logOutAction()}
+                        className={classes.homeButton}
+                        >
+              <ExitToAppIcon className={classes.buttonIcon}/>
+            </IconButton>
+          </div>
+        }
       </Toolbar>
     </AppBar>
 );
 
-export default withStyles(styles)(MainHeaderComponent);
+const mapStateToProps = ({rootReducer}) => ({
+  loginStatus: rootReducer.loginStatus
+});
+
+const mapDispatchToProps = dispatch => ({
+  actions: bindActionCreators({
+    logOutAction,
+  }, dispatch)
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(withStyles(styles)(MainHeaderComponent));
