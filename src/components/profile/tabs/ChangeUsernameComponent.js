@@ -4,8 +4,8 @@ import TextField from "@material-ui/core/TextField";
 import Fab from "@material-ui/core/Fab";
 import {withStyles} from "@material-ui/core";
 import {connect} from "react-redux";
-import {changePasswordAction, changeUsernameAction} from "../../../actions/loginActions/actions";
 import {bindActionCreators} from "redux";
+import {changeUsernameAction} from "../../../actions/loginActions/actions";
 
 const styles = {
   formContainer: {

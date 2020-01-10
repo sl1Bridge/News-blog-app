@@ -1,7 +1,6 @@
 import React from 'react';
-import { BrowserRouter as Router, Route, Switch, Redirect} from "react-router-dom";
+import { BrowserRouter as Router, Route, Switch} from "react-router-dom";
 
-import MainHeaderComponent from "./header/MainHeaderComponent";
 import MainNewsListComponent from "./news/MainNewsListComponent";
 import HomePageComponent from "./home/HomePageComponent";
 import SignInComponent from "./login/SignInComponent";
@@ -10,13 +9,16 @@ import MainProfileComponent from "./profile/MainProfileComponent";
 import '../styles/styles.css'
 
 const App = () => (
-  <div>
-    <MainHeaderComponent />
-    <MainNewsListComponent />
-    <HomePageComponent />
-    <SignInComponent />
-    <MainProfileComponent />
-  </div>
+  <Router>
+    <div>
+      <Switch>
+        <Route exact path="/" component={HomePageComponent} />
+        <Route exact path="/news" component={MainNewsListComponent} />
+        <Route exact path="/login" component={SignInComponent} />
+        <Route exact path="/profile" component={MainProfileComponent} />
+      </Switch>
+    </div>
+  </Router>
 );
 
 export default App;

@@ -9,6 +9,7 @@ import withStyles from "@material-ui/core/styles/withStyles";
 import ProfileInfoComponent from "./tabs/ProfileInfoComponent";
 import ChangeUsernameComponent from "./tabs/ChangeUsernameComponent";
 import ChangePasswordComponent from "./tabs/ChangePasswordComponent";
+import MainHeaderComponent from "../header/MainHeaderComponent";
 
 const styles = {
   marginContainer: {
@@ -20,28 +21,31 @@ const MainProfileComponent = ({classes}) => {
   const [value, setValue] = React.useState(0);
 
   return (
-    <Container maxWidth="md" className={classes.marginContainer}>
-      <Paper elevation={2}>
-        <AppBar position="static">
-          <Tabs value={value}
-                onChange={(event, newValue) => setValue(newValue)}
-                aria-label="simple tabs example">
-            <Tab label="Profile Info" />
-            <Tab label="Change Username" />
-            <Tab label="Change Password" />
-          </Tabs>
-        </AppBar>
-        <OneTabPanelComponent value={value} index={0}>
-          <ProfileInfoComponent />
-        </OneTabPanelComponent>
-        <OneTabPanelComponent value={value} index={1}>
-          <ChangeUsernameComponent />
-        </OneTabPanelComponent>
-        <OneTabPanelComponent value={value} index={2}>
-          <ChangePasswordComponent />
-        </OneTabPanelComponent>
-      </Paper>
-    </Container>
+    <div>
+      <MainHeaderComponent />
+      <Container maxWidth="md" className={classes.marginContainer}>
+        <Paper elevation={2}>
+          <AppBar position="static">
+            <Tabs value={value}
+                  onChange={(event, newValue) => setValue(newValue)}
+                  aria-label="simple tabs example">
+              <Tab label="Profile Info" />
+              <Tab label="Change Username" />
+              <Tab label="Change Password" />
+            </Tabs>
+          </AppBar>
+          <OneTabPanelComponent value={value} index={0}>
+            <ProfileInfoComponent />
+          </OneTabPanelComponent>
+          <OneTabPanelComponent value={value} index={1}>
+            <ChangeUsernameComponent />
+          </OneTabPanelComponent>
+          <OneTabPanelComponent value={value} index={2}>
+            <ChangePasswordComponent />
+          </OneTabPanelComponent>
+        </Paper>
+      </Container>
+    </div>
   );
 };
 

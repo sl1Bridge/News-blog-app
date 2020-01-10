@@ -7,7 +7,7 @@ import {Paper, withStyles} from "@material-ui/core";
 import Container from "@material-ui/core/Container";
 import CircularProgress from "@material-ui/core/CircularProgress";
 import {bindActionCreators} from "redux";
-
+import MainHeaderComponent from "../header/MainHeaderComponent";
 
 const styles = {
   marginContainer: {
@@ -22,26 +22,29 @@ const MainNewsListComponent = ({classes, news, isEnded, offset, actions: { loadN
   useEffect(loadNewsListAction, []);
 
   return (
-    <Container maxWidth="md">
-      <Paper elevation={2} className={classes.marginContainer}>
-        {
-          news.map(({id, article, title}) => (
-              <OneNewsComponent key={id} title={title} article={article}/>
-          ))
-        }
-        {
-          <div className={classes.alignCircle}>
-            {
-              !isEnded ?
-                <React.Fragment>
-                  <CircularProgress  />
-                  <Waypoint onEnter={() => (loadMoreNewsAction(news, offset))} />
-                </React.Fragment> : <React.Fragment/>
-            }
-          </div>
-        }
-      </Paper>
-    </Container>
+    <div>
+      <MainHeaderComponent />
+      <Container maxWidth="md">
+        <Paper elevation={2} className={classes.marginContainer}>
+          {
+            news.map(({id, article, title}) => (
+                <OneNewsComponent key={id} title={title} article={article}/>
+            ))
+          }
+          {
+            <div >
+              {
+                !isEnded ?
+                  <React.Fragment className={classes.alignCircle}>
+                    <CircularProgress  />
+                    <Waypoint onEnter={() => (loadMoreNewsAction(news, offset))} />
+                  </React.Fragment> : <React.Fragment/>
+              }
+            </div>
+          }
+        </Paper>
+      </Container>
+    </div>
   )
 };
 
