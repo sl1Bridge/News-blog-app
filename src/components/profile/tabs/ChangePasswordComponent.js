@@ -5,6 +5,7 @@ import Fab from "@material-ui/core/Fab";
 import {withStyles} from "@material-ui/core";
 import {connect} from "react-redux";
 import {changePasswordAction} from "../../../actions/loginActions/actions";
+import {bindActionCreators} from "redux";
 
 const styles = {
   formContainer: {
@@ -26,7 +27,7 @@ const styles = {
   },
 };
 
-const ChangePasswordComponent = ({classes, password, onChangeBtnClick}) => {
+const ChangePasswordComponent = ({classes, password, actions: { changePasswordAction }}) => {
   const [inputPrev, setInputPrev] = React.useState('');
   const [inputNew, setInputNew] = React.useState('');
 
@@ -35,7 +36,7 @@ const ChangePasswordComponent = ({classes, password, onChangeBtnClick}) => {
       <form onSubmit={(event => {
         event.preventDefault();
         if(inputPrev === password) {
-          onChangeBtnClick(inputNew)
+          changePasswordAction(inputNew)
         }
       })}>
         <div className={classes.fieldsContainer}>
@@ -76,8 +77,10 @@ const mapStateToProps = ({rootReducer}) => ({
   password: rootReducer.password,
 });
 
-const mapDispatchToProps = (dispatch) => ({
-  onChangeBtnClick: (newPassword) => dispatch(changePasswordAction(newPassword)),
+const mapDispatchToProps = dispatch => ({
+  actions: bindActionCreators({
+    changePasswordAction,
+  }, dispatch)
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(withStyles(styles)(ChangePasswordComponent));

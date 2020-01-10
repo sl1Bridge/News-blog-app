@@ -5,6 +5,7 @@ import Typography from "@material-ui/core/Typography";
 import Fab from "@material-ui/core/Fab";
 import {connect} from "react-redux";
 import {changeLoginStatusAction} from "../../actions/loginActions/actions";
+import {bindActionCreators} from "redux";
 
 const styles = {
   flexContainer: {
@@ -38,7 +39,7 @@ const styles = {
   },
 };
 
-const SignInComponent = ({classes, username, password, onSignInBtnClick}) => {
+const SignInComponent = ({classes, username, password, actions: { changeLoginStatusAction }}) => {
   const [inputUsername, setInputUsername] = React.useState('');
   const [inputPassword, setInputPassword] = React.useState('');
 
@@ -47,7 +48,7 @@ const SignInComponent = ({classes, username, password, onSignInBtnClick}) => {
     <form onSubmit={(event => {
                         event.preventDefault();
                         if(inputUsername === username && inputPassword === password) {
-                          onSignInBtnClick()
+                          changeLoginStatusAction()
                         }
                       })}
           className={classes.flexContainer}>
@@ -89,8 +90,10 @@ const mapStateToProps = ({rootReducer}) => ({
   password: rootReducer.password,
 });
 
-const mapDispatchToProps = (dispatch) => ({
-  onSignInBtnClick: () => dispatch(changeLoginStatusAction()),
+const mapDispatchToProps = dispatch => ({
+  actions: bindActionCreators({
+    changeLoginStatusAction
+  }, dispatch)
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(withStyles(styles)(SignInComponent));
