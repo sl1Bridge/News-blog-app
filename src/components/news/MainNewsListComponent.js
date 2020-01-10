@@ -32,15 +32,13 @@ const MainNewsListComponent = ({classes, news, isEnded, offset, actions: { loadN
             ))
           }
           {
-            <div >
-              {
-                !isEnded ?
-                  <React.Fragment className={classes.alignCircle}>
-                    <CircularProgress  />
-                    <Waypoint onEnter={() => (loadMoreNewsAction(news, offset))} />
-                  </React.Fragment> : <React.Fragment/>
-              }
-            </div>
+            !isEnded ?
+            <div className={classes.alignCircle}>
+              <React.Fragment >
+                <CircularProgress  />
+                <Waypoint onEnter={() => (loadMoreNewsAction(news, offset))} />
+              </React.Fragment>
+            </div> : <React.Fragment/>
           }
         </Paper>
       </Container>

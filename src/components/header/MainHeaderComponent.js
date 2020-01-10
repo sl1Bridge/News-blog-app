@@ -8,6 +8,7 @@ import IconButton from "@material-ui/core/IconButton";
 import Typography from "@material-ui/core/Typography";
 import Button from "@material-ui/core/Button";
 import HomeIcon from '@material-ui/icons/Home';
+import history from "../../history";
 
 const styles = {
   headerContainer: {
@@ -47,7 +48,7 @@ const MainHeaderComponent = ({classes}) => (
         <Typography variant="h4"
                     className={classes.title}
         >
-          News
+          {(history.location.pathname === "/profile") ? "Profile" : "News"}
         </Typography>
         <Link to="/login" className={classes.linkStyles}>
           <Button color="inherit"
