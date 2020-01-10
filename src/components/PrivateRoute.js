@@ -2,11 +2,11 @@ import React from "react";
 import { Route, Redirect } from "react-router-dom";
 import {connect} from "react-redux";
 
-export const PrivateRoute = ({ component: Component, loginStatus, ...rest}) => (
+export const PrivateRoute = ({ component: Component, loginStatus, login, ...rest}) => (
   <Route
     {...rest}
     render={props =>
-      loginStatus === true ? (
+      loginStatus === login ? (
         <Component {...props} />
       ) : (
         <Redirect
