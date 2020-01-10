@@ -1,5 +1,6 @@
 import React from 'react';
-import { BrowserRouter as Router, Route, Switch} from "react-router-dom";
+import { Router, Route, Switch} from "react-router-dom";
+import history from "./../router/history";
 
 import MainNewsListComponent from "./news/MainNewsListComponent";
 import HomePageComponent from "./home/HomePageComponent";
@@ -9,7 +10,7 @@ import MainProfileComponent from "./profile/MainProfileComponent";
 import '../styles/styles.css'
 
 const App = () => (
-  <Router>
+  <Router history={history}>
     <div>
       <Switch>
         <Route exact path="/" component={HomePageComponent} />

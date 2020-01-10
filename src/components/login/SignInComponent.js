@@ -6,6 +6,7 @@ import Fab from "@material-ui/core/Fab";
 import {connect} from "react-redux";
 import {changeLoginStatusAction} from "../../actions/loginActions/actions";
 import {bindActionCreators} from "redux";
+import history from "../../router/history";
 
 const styles = {
   flexContainer: {
@@ -48,7 +49,8 @@ const SignInComponent = ({classes, username, password, actions: { changeLoginSta
     <form onSubmit={(event => {
                         event.preventDefault();
                         if(inputUsername === username && inputPassword === password) {
-                          changeLoginStatusAction()
+                          changeLoginStatusAction();
+                          history.push('/profile')
                         }
                       })}
           className={classes.flexContainer}>
