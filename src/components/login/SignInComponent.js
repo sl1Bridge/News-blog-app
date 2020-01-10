@@ -6,7 +6,7 @@ import Fab from "@material-ui/core/Fab";
 import {connect} from "react-redux";
 import {changeLoginStatusAction} from "../../actions/loginActions/actions";
 import {bindActionCreators} from "redux";
-import history from "../../router/history";
+import history from "../../history";
 
 const styles = {
   flexContainer: {
