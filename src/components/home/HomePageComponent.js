@@ -5,6 +5,7 @@ import Divider from "@material-ui/core/Divider";
 import {withStyles} from "@material-ui/core";
 import Typography from "@material-ui/core/Typography";
 import { Link } from "react-router-dom";
+import {connect} from "react-redux";
 
 const styles = {
   marginContainer: {
@@ -31,7 +32,7 @@ const styles = {
   },
 };
 
-const HomePageComponent = ({classes}) => (
+const HomePageComponent = ({classes, loginStatus}) => (
   <List component="nav" aria-label="mailbox folders" className={classes.marginContainer}>
     <Link to="/news" className={classes.linkStyles}>
       <ListItem button className={classes.itemStyles}>
@@ -41,6 +42,15 @@ const HomePageComponent = ({classes}) => (
       </ListItem>
     </Link>
     <Divider />
+    {
+      (loginStatus) ?
+    <Link to="/profile" className={classes.linkStyles}>
+      <ListItem button className={classes.itemStyles}>
+        <Typography variant="button" display="block" className={classes.textStyles}>
+          Profile
+        </Typography>
+      </ListItem>
+    </Link> :
     <Link to="/login" className={classes.linkStyles}>
       <ListItem button className={classes.itemStyles}>
         <Typography variant="button" display="block" className={classes.textStyles}>
@@ -48,7 +58,12 @@ const HomePageComponent = ({classes}) => (
         </Typography>
       </ListItem>
     </Link>
+    }
   </List>
 );
 
-export default withStyles(styles)(HomePageComponent);
+const mapStateToProps = ({rootReducer}) => ({
+  loginStatus: rootReducer.loginStatus
+});
+
+export default connect(mapStateToProps)(withStyles(styles)(HomePageComponent));
