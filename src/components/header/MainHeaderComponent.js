@@ -12,7 +12,7 @@ import ExitToAppIcon from '@material-ui/icons/ExitToApp';
 import history from "../../history";
 import {connect} from "react-redux";
 import {bindActionCreators} from "redux";
-import {logOutAction} from "../../actions/loginActions/actions";
+import {logOutActionCreator} from "../../actions/loginActions/actionCreators";
 
 
 const styles = {
@@ -38,7 +38,7 @@ const styles = {
   },
 };
 
-const MainHeaderComponent = ({classes, loginStatus, actions: {logOutAction}}) => (
+const MainHeaderComponent = ({classes, loginStatus, actions: {logOutActionCreator}}) => (
     <AppBar position="static">
       <Toolbar className={classes.headerContainer}>
         <Link to="/" className={classes.linkStyles}>
@@ -75,7 +75,7 @@ const MainHeaderComponent = ({classes, loginStatus, actions: {logOutAction}}) =>
             <IconButton edge="start"
                         color="inherit"
                         aria-label="logout"
-                        onClick={() => logOutAction()}
+                        onClick={() => logOutActionCreator()}
                         className={classes.homeButton}
                         >
               <ExitToAppIcon className={classes.buttonIcon}/>
@@ -92,7 +92,7 @@ const mapStateToProps = ({rootReducer}) => ({
 
 const mapDispatchToProps = dispatch => ({
   actions: bindActionCreators({
-    logOutAction,
+    logOutActionCreator,
   }, dispatch)
 });
 
