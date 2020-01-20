@@ -4,6 +4,7 @@ import TextField from "@material-ui/core/TextField";
 import Fab from "@material-ui/core/Fab";
 import {withStyles} from "@material-ui/core";
 import {connect} from "react-redux";
+import {bindActionCreators} from "redux";
 import {changeUsernameAction} from "../../../actions/loginActions/actions";
 
 const styles = {
@@ -26,7 +27,7 @@ const styles = {
   },
 };
 
-const ChangeUsernameComponent = ({classes, username, onChangeBtnClick}) => {
+const ChangeUsernameComponent = ({classes, username, actions: { changeUsernameAction }}) => {
   const [inputPrev, setInputPrev] = React.useState('');
   const [inputNew, setInputNew] = React.useState('');
 
@@ -35,7 +36,7 @@ const ChangeUsernameComponent = ({classes, username, onChangeBtnClick}) => {
       <form onSubmit={(event => {
         event.preventDefault();
         if(inputPrev === username) {
-          onChangeBtnClick(inputNew)
+          changeUsernameAction(inputNew)
         }
       })}>
         <div className={classes.fieldsContainer}>
@@ -72,8 +73,10 @@ const mapStateToProps = ({rootReducer}) => ({
   username: rootReducer.username,
 });
 
-const mapDispatchToProps = (dispatch) => ({
-  onChangeBtnClick: (newUsername) => dispatch(changeUsernameAction(newUsername)),
+const mapDispatchToProps = dispatch => ({
+  actions: bindActionCreators({
+    changeUsernameAction,
+  }, dispatch)
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(withStyles(styles)(ChangeUsernameComponent));

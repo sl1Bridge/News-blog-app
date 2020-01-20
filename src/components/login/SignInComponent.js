@@ -5,6 +5,8 @@ import Typography from "@material-ui/core/Typography";
 import Fab from "@material-ui/core/Fab";
 import {connect} from "react-redux";
 import {changeLoginStatusAction} from "../../actions/loginActions/actions";
+import {bindActionCreators} from "redux";
+import history from "../../history";
 
 const styles = {
   flexContainer: {
@@ -14,7 +16,7 @@ const styles = {
   },
   formContainer: {
     width: '380px',
-    height: '250px',
+    height: '280px',
     margin: '10% auto 0 auto',
     padding: '0',
     backgroundColor: 'white',
@@ -36,20 +38,28 @@ const styles = {
     marginBottom: '15px',
     width: '350px',
   },
+  errorStyles: {
+    color: 'red',
+    margin: '0 auto 0 20px'
+  }
 };
 
-const SignInComponent = ({classes, username, password, onSignInBtnClick}) => {
+const SignInComponent = ({classes, username, password, actions: { changeLoginStatusAction }}) => {
   const [inputUsername, setInputUsername] = React.useState('');
   const [inputPassword, setInputPassword] = React.useState('');
+  const [displayErr, setDisplayErr] = React.useState(false);
 
   return (
   <div className={classes.formContainer}>
-    <form onSubmit={(event => {
+    <form onSubmit={event => {
                         event.preventDefault();
                         if(inputUsername === username && inputPassword === password) {
-                          onSignInBtnClick()
+                          changeLoginStatusAction();
+                          history.push('/profile')
+                        } else {
+                          setDisplayErr(true)
                         }
-                      })}
+                      }}
           className={classes.flexContainer}>
       <div className={classes.fieldsContainer}>
         <Typography className={classes.textLabel}> Username </Typography>
@@ -69,6 +79,12 @@ const SignInComponent = ({classes, username, password, onSignInBtnClick}) => {
                    onChange={(event) => setInputPassword(event.target.value)}
                    className={classes.fieldStyles}/>
       </div>
+      {
+        displayErr ?
+        <Typography variant="caption" className={classes.errorStyles}>
+          Invalid username or password
+        </Typography> : null
+      }
       <div>
         <Fab variant="extended"
              color="primary"
@@ -89,8 +105,10 @@ const mapStateToProps = ({rootReducer}) => ({
   password: rootReducer.password,
 });
 
-const mapDispatchToProps = (dispatch) => ({
-  onSignInBtnClick: () => dispatch(changeLoginStatusAction()),
+const mapDispatchToProps = dispatch => ({
+  actions: bindActionCreators({
+    changeLoginStatusAction
+  }, dispatch)
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(withStyles(styles)(SignInComponent));

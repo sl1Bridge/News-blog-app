@@ -4,6 +4,8 @@ import ListItem from "@material-ui/core/ListItem";
 import Divider from "@material-ui/core/Divider";
 import {withStyles} from "@material-ui/core";
 import Typography from "@material-ui/core/Typography";
+import { Link } from "react-router-dom";
+import {connect} from "react-redux";
 
 const styles = {
   marginContainer: {
@@ -24,22 +26,44 @@ const styles = {
     font: '600 28px Arial, sans-serif',
     margin: '0 auto',
   },
+  linkStyles: {
+    color: 'inherit',
+    textDecoration: 'inherit',
+  },
 };
 
-const HomePageComponent = ({classes}) => (
+const HomePageComponent = ({classes, loginStatus}) => (
   <List component="nav" aria-label="mailbox folders" className={classes.marginContainer}>
-    <ListItem button className={classes.itemStyles}>
-      <Typography variant="button" display="block" className={classes.textStyles}>
-        Check Out News
-      </Typography>
-    </ListItem>
+    <Link to="/news" className={classes.linkStyles}>
+      <ListItem button className={classes.itemStyles}>
+        <Typography variant="button" display="block" className={classes.textStyles}>
+           Check Out News
+        </Typography>
+      </ListItem>
+    </Link>
     <Divider />
-    <ListItem button className={classes.itemStyles}>
-      <Typography variant="button" display="block" className={classes.textStyles}>
-        Login
-      </Typography>
-    </ListItem>
+    {
+      (loginStatus) ?
+    <Link to="/profile" className={classes.linkStyles}>
+      <ListItem button className={classes.itemStyles}>
+        <Typography variant="button" display="block" className={classes.textStyles}>
+          Profile
+        </Typography>
+      </ListItem>
+    </Link> :
+    <Link to="/login" className={classes.linkStyles}>
+      <ListItem button className={classes.itemStyles}>
+        <Typography variant="button" display="block" className={classes.textStyles}>
+          Login
+        </Typography>
+      </ListItem>
+    </Link>
+    }
   </List>
 );
 
-export default withStyles(styles)(HomePageComponent);
+const mapStateToProps = ({rootReducer}) => ({
+  loginStatus: rootReducer.loginStatus
+});
+
+export default connect(mapStateToProps)(withStyles(styles)(HomePageComponent));
