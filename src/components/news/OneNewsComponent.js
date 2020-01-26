@@ -6,19 +6,7 @@ import CardContent from "@material-ui/core/CardContent";
 import {withStyles} from "@material-ui/core";
 
 import noImg from "../../img/no-image-found.jpg"
-
-const styles = {
-  cardStyle: {
-    margin: '0 10px 15px 10px',
-    boxShadow: '1px 2px 8px 2px',
-  },
-  photo: {
-    marginLeft: '5px',
-    float: 'right',
-    height: '260px',
-    width: '260px',
-  }
-};
+import {styles} from "../../styles/styles";
 
 const OneNewsComponent = ({classes, title, article}) => (
   <Card className={classes.cardStyle}>

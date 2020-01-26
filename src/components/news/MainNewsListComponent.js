@@ -8,15 +8,7 @@ import Container from "@material-ui/core/Container";
 import CircularProgress from "@material-ui/core/CircularProgress";
 import {bindActionCreators} from "redux";
 import MainHeaderComponent from "../header/MainHeaderComponent";
-
-const styles = {
-  marginContainer: {
-    padding: '10px 0',
-  },
-  alignCircle: {
-    padding: '30px 50%',
-  },
-};
+import {styles} from "../../styles/styles";
 
 const MainNewsListComponent = ({classes, news, isEnded, offset, actions: { loadNewsListAction, loadMoreNewsAction }}) => {
   useEffect(loadNewsListAction, []);
@@ -25,7 +17,7 @@ const MainNewsListComponent = ({classes, news, isEnded, offset, actions: { loadN
     <div>
       <MainHeaderComponent />
       <Container maxWidth="md">
-        <Paper elevation={2} className={classes.marginContainer}>
+        <Paper elevation={2} className={classes.listContainer}>
           {
             news.map(({id, article, title}) => (
                 <OneNewsComponent key={id} title={title} article={article}/>

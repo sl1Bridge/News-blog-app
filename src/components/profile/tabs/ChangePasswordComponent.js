@@ -6,26 +6,7 @@ import {withStyles} from "@material-ui/core";
 import {connect} from "react-redux";
 import {changePasswordAction} from "../../../actions/loginActions/actions";
 import {bindActionCreators} from "redux";
-
-const styles = {
-  formContainer: {
-    height: '200px'
-  },
-  fieldsContainer: {
-    marginTop: '20px',
-  },
-  textLabel: {
-    font: '600 14px Arial, sans-serif',
-    marginBottom: '5px',
-  },
-  buttonStyles: {
-    marginTop: '10px',
-  },
-  fieldStyles: {
-    marginBottom: '15px',
-    width: '350px',
-  },
-};
+import {styles} from "../../../styles/styles";
 
 const ChangePasswordComponent = ({classes, password, actions: { changePasswordAction }}) => {
   const [inputPrev, setInputPrev] = React.useState('');

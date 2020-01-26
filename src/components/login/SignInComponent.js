@@ -7,42 +7,7 @@ import {connect} from "react-redux";
 import {changeLoginStatusAction} from "../../actions/loginActions/actions";
 import {bindActionCreators} from "redux";
 import history from "../../history";
-
-const styles = {
-  flexContainer: {
-    display: 'flex',
-    flexDirection: 'column',
-    alignItems: 'center',
-  },
-  formContainer: {
-    width: '380px',
-    height: '280px',
-    margin: '10% auto 0 auto',
-    padding: '0',
-    backgroundColor: 'white',
-    border: '1px solid rgb(0,0,0,0.3)',
-    borderRadius: '10px',
-    boxShadow: '2px 3px 20px 0px',
-  },
-  fieldsContainer: {
-    marginTop: '20px',
-  },
-  textLabel: {
-    font: '600 14px Arial, sans-serif',
-    marginBottom: '5px',
-  },
-  buttonStyles: {
-    marginTop: '10px',
-  },
-  fieldStyles: {
-    marginBottom: '15px',
-    width: '350px',
-  },
-  errorStyles: {
-    color: 'red',
-    margin: '0 auto 0 20px'
-  }
-};
+import {styles} from "../../styles/styles";
 
 const SignInComponent = ({classes, username, password, actions: { changeLoginStatusAction }}) => {
   const [inputUsername, setInputUsername] = React.useState('');
@@ -50,7 +15,7 @@ const SignInComponent = ({classes, username, password, actions: { changeLoginSta
   const [displayErr, setDisplayErr] = React.useState(false);
 
   return (
-  <div className={classes.formContainer}>
+  <div className={classes.signInFormContainer}>
     <form onSubmit={event => {
                         event.preventDefault();
                         if(inputUsername === username && inputPassword === password) {
@@ -61,15 +26,15 @@ const SignInComponent = ({classes, username, password, actions: { changeLoginSta
                         }
                       }}
           className={classes.flexContainer}>
-      <div className={classes.fieldsContainer}>
-        <Typography className={classes.textLabel}> Username </Typography>
+      <div className={classes.fieldContainer}>
+        <Typography className={classes.txtLabel}> Username </Typography>
         <TextField placeholder="Username"
                    variant="outlined"
                    size="small"
                    value={inputUsername}
                    onChange={(event) => setInputUsername(event.target.value)}
-                   className={classes.fieldStyles}/>
-        <Typography className={classes.textLabel}> Password </Typography>
+                   className={classes.textFieldStyles}/>
+        <Typography className={classes.txtLabel}> Password </Typography>
         <TextField placeholder="Password"
                    variant="outlined"
                    size="small"
@@ -77,7 +42,7 @@ const SignInComponent = ({classes, username, password, actions: { changeLoginSta
                    autoComplete="password"
                    value={inputPassword}
                    onChange={(event) => setInputPassword(event.target.value)}
-                   className={classes.fieldStyles}/>
+                   className={classes.textFieldStyles}/>
       </div>
       {
         displayErr ?
@@ -90,7 +55,7 @@ const SignInComponent = ({classes, username, password, actions: { changeLoginSta
              color="primary"
              aria-label="add"
              type="submit"
-             className={classes.buttonStyles}>
+             className={classes.btnStyles}>
           Sign In
         </Fab>
       </div>

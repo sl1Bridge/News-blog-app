@@ -13,30 +13,7 @@ import history from "../../history";
 import {connect} from "react-redux";
 import {bindActionCreators} from "redux";
 import {logOutActionCreator} from "../../actions/loginActions/actionCreators";
-
-
-const styles = {
-  headerContainer: {
-    height: '100px',
-  },
-  title: {
-    flexGrow: 1,
-  },
-  homeButton: {
-    margin: '0 35px 0 15px',
-  },
-  buttonIcon: {
-    fontSize: '32px',
-  },
-  loginButton: {
-    fontSize: '18px',
-    marginRight: '15px',
-  },
-  linkStyles: {
-    color: 'inherit',
-    textDecoration: 'inherit',
-  },
-};
+import {styles} from "../../styles/styles";
 
 const MainHeaderComponent = ({classes, loginStatus, actions: {logOutActionCreator}}) => (
     <AppBar position="static">

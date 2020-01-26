@@ -10,12 +10,7 @@ import ProfileInfoComponent from "./tabs/ProfileInfoComponent";
 import ChangeUsernameComponent from "./tabs/ChangeUsernameComponent";
 import ChangePasswordComponent from "./tabs/ChangePasswordComponent";
 import MainHeaderComponent from "../header/MainHeaderComponent";
-
-const styles = {
-  marginContainer: {
-    marginTop: '15px',
-  },
-};
+import {styles} from "../../styles/styles";
 
 const MainProfileComponent = ({classes}) => {
   const [value, setValue] = React.useState(0);
@@ -23,7 +18,7 @@ const MainProfileComponent = ({classes}) => {
   return (
     <div>
       <MainHeaderComponent />
-      <Container maxWidth="md" className={classes.marginContainer}>
+      <Container maxWidth="md" className={classes.mainProfileContainer}>
         <Paper elevation={2}>
           <AppBar position="static">
             <Tabs value={value}

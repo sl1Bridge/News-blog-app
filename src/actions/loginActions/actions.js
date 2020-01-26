@@ -1,7 +1,7 @@
 import {
   changeLoginStatusActionCreator,
   changePasswordActionCreator,
-  changeUsernameActionCreator, logOutActionCreator
+  changeUsernameActionCreator,
 } from "./actionCreators";
 
 export const changeLoginStatusAction = () => dispatch => {
